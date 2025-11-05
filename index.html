@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Animation - Jump Jump VPN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main container for the loading animation -->
+    <div class="container">
+        <!-- Logo container in the center -->
+        <div class="logo">
+            <!-- Replace with your image path -->
+            <img src="profile.jpg" alt="Jump Jump VPN" class="logo-img">
+        </div>
+        
+        <!-- Main rotating rings -->
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="ring ring-4"></div>
+        <div class="ring ring-5"></div>
+        <div class="ring ring-6"></div>
+        
+        <!-- Quarter rings - two quarter rings for each main ring -->
+        <div class="quarter-ring qr-1a"></div>
+        <div class="quarter-ring qr-1b"></div>
+        <div class="quarter-ring qr-2a"></div>
+        <div class="quarter-ring qr-2b"></div>
+        <div class="quarter-ring qr-3a"></div>
+        <div class="quarter-ring qr-3b"></div>
+        <div class="quarter-ring qr-4a"></div>
+        <div class="quarter-ring qr-4b"></div>
+        <div class="quarter-ring qr-5a"></div>
+        <div class="quarter-ring qr-5b"></div>
+        <div class="quarter-ring qr-6a"></div>
+        <div class="quarter-ring qr-6b"></div>
+        
+        <!-- Dots attached to rings 1 and 3 -->
+        <div class="dot dot-1a"></div>
+        <div class="dot dot-1b"></div>
+        <div class="dot dot-1c"></div>
+        <div class="dot dot-3a"></div>
+        <div class="dot dot-3b"></div>
+        <div class="dot dot-3c"></div>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Define rings and their connected dots
+            const rings = {
+                'ring-1': {
+                    element: document.querySelector('.ring-1'),
+                    radius: 140, // Half of ring width
+                    dots: [
+                        { element: document.querySelector('.dot-1a'), angle: 0 },
+                        { element: document.querySelector('.dot-1b'), angle: 120 },
+                        { element: document.querySelector('.dot-1c'), angle: 240 }
+                    ]
+                },
+                'ring-3': {
+                    element: document.querySelector('.ring-3'),
+                    radius: 100, // Half of ring width
+                    dots: [
+                        { element: document.querySelector('.dot-3a'), angle: 60 },
+                        { element: document.querySelector('.dot-3b'), angle: 180 },
+                        { element: document.querySelector('.dot-3c'), angle: 300 }
+                    ]
+                }
+            };
+            
+            // Get container dimensions
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const centerX = containerRect.width / 2;
+            const centerY = containerRect.height / 2;
+            
+            // Update dot positions based on ring rotation
+            function updateDots() {
+                Object.values(rings).forEach(ringData => {
+                    const ring = ringData.element;
+                    const ringRect = ring.getBoundingClientRect();
+                    const ringCenterX = ringRect.left + ringRect.width / 2 - containerRect.left;
+                    const ringCenterY = ringRect.top + ringRect.height / 2 - containerRect.top;
+                    
+                    // Calculate current rotation of the ring
+                    const rotation = getRotation(ring);
+                    
+                    ringData.dots.forEach(dot => {
+                        // Calculate dot position based on ring rotation and fixed dot angle
+                        const totalAngle = rotation + dot.angle;
+                        const radian = totalAngle * Math.PI / 180;
+                        
+                        const x = ringCenterX + ringData.radius * Math.cos(radian);
+                        const y = ringCenterY + ringData.radius * Math.sin(radian);
+                        
+                        // Apply position to dot
+                        dot.element.style.left = `${x - dot.element.offsetWidth / 2}px`;
+                        dot.element.style.top = `${y - dot.element.offsetHeight / 2}px`;
+                    });
+                });
+                
+                // Continue animation
+                requestAnimationFrame(updateDots);
+            }
+            
+            // Get current rotation angle from transform matrix
+            function getRotation(element) {
+                const transform = window.getComputedStyle(element).transform;
+                if (transform === 'none') return 0;
+                
+                const values = transform.split('(')[1].split(')')[0].split(',');
+                const a = parseFloat(values[0]);
+                const b = parseFloat(values[1]);
+                return Math.atan2(b, a) * (180 / Math.PI);
+            }
+            
+            // Start animation
+            updateDots();
+        });
+    </script>
+</body>
+</html>

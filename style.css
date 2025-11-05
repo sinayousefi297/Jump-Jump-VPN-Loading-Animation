@@ -1,0 +1,318 @@
+/* Reset all margins and paddings, use border-box for box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main body styling with dark blue background */
+body {
+    background: #0f1a30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Main container for the animation */
+.container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Circular logo container with glow effect */
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.7);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Logo image styling */
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Base ring styling with rotation animation */
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: transparent;
+    animation: rotate linear infinite;
+}
+
+/* Ring 1 - Largest and thinnest ring */
+.ring-1 {
+    width: 280px;
+    height: 280px;
+    border-width: 1px;
+    border-top-color: rgba(0, 168, 255, 0.3);
+    border-bottom-color: rgba(0, 210, 255, 0.3);
+    animation-duration: 8s;
+}
+
+/* Ring 2 - Medium ring with reverse animation */
+.ring-2 {
+    width: 240px;
+    height: 240px;
+    border-width: 1.5px;
+    border-left-color: rgba(0, 210, 255, 0.5);
+    border-right-color: rgba(0, 255, 242, 0.5);
+    animation-duration: 6s;
+    animation-direction: reverse;
+}
+
+/* Ring 3 - Medium ring with faster animation */
+.ring-3 {
+    width: 200px;
+    height: 200px;
+    border-width: 2px;
+    border-top-color: rgba(0, 255, 242, 0.7);
+    border-bottom-color: rgba(0, 255, 170, 0.7);
+    animation-duration: 4s;
+}
+
+/* Ring 4 - Smallest and thickest ring */
+.ring-4 {
+    width: 160px;
+    height: 160px;
+    border-width: 2.5px;
+    border-left-color: rgba(0, 255, 170, 0.9);
+    border-right-color: rgba(0, 168, 255, 0.9);
+    animation-duration: 2s;
+    animation-direction: reverse;
+}
+
+/* Additional rings for depth effect - Ring 5 */
+.ring-5 {
+    width: 260px;
+    height: 260px;
+    border-width: 0.5px;
+    border-top-color: rgba(0, 168, 255, 0.2);
+    border-bottom-color: rgba(0, 168, 255, 0.2);
+    animation-duration: 10s;
+}
+
+/* Additional rings for depth effect - Ring 6 */
+.ring-6 {
+    width: 220px;
+    height: 220px;
+    border-width: 1px;
+    border-left-color: rgba(0, 210, 255, 0.2);
+    border-right-color: rgba(0, 210, 255, 0.2);
+    animation-duration: 7s;
+    animation-direction: reverse;
+}
+
+/* Quarter rings - partial rings for visual effect */
+.quarter-ring {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: transparent;
+    animation: rotate linear infinite;
+}
+
+/* Quarter rings for Ring 1 - top segment */
+.qr-1a {
+    width: 280px;
+    height: 280px;
+    border-width: 1px;
+    border-top-color: rgba(0, 168, 255, 0.3);
+    animation-duration: 8s;
+}
+
+/* Quarter rings for Ring 1 - bottom segment */
+.qr-1b {
+    width: 280px;
+    height: 280px;
+    border-width: 1px;
+    border-bottom-color: rgba(0, 210, 255, 0.3);
+    animation-duration: 8s;
+}
+
+/* Quarter rings for Ring 2 - left segment */
+.qr-2a {
+    width: 240px;
+    height: 240px;
+    border-width: 1.5px;
+    border-left-color: rgba(0, 210, 255, 0.5);
+    animation-duration: 6s;
+    animation-direction: reverse;
+}
+
+/* Quarter rings for Ring 2 - right segment */
+.qr-2b {
+    width: 240px;
+    height: 240px;
+    border-width: 1.5px;
+    border-right-color: rgba(0, 255, 242, 0.5);
+    animation-duration: 6s;
+    animation-direction: reverse;
+}
+
+/* Quarter rings for Ring 3 - top segment */
+.qr-3a {
+    width: 200px;
+    height: 200px;
+    border-width: 2px;
+    border-top-color: rgba(0, 255, 242, 0.7);
+    animation-duration: 4s;
+}
+
+/* Quarter rings for Ring 3 - bottom segment */
+.qr-3b {
+    width: 200px;
+    height: 200px;
+    border-width: 2px;
+    border-bottom-color: rgba(0, 255, 170, 0.7);
+    animation-duration: 4s;
+}
+
+/* Quarter rings for Ring 4 - left segment */
+.qr-4a {
+    width: 160px;
+    height: 160px;
+    border-width: 2.5px;
+    border-left-color: rgba(0, 255, 170, 0.9);
+    animation-duration: 2s;
+    animation-direction: reverse;
+}
+
+/* Quarter rings for Ring 4 - right segment */
+.qr-4b {
+    width: 160px;
+    height: 160px;
+    border-width: 2.5px;
+    border-right-color: rgba(0, 168, 255, 0.9);
+    animation-duration: 2s;
+    animation-direction: reverse;
+}
+
+/* Quarter rings for Ring 5 - top segment */
+.qr-5a {
+    width: 260px;
+    height: 260px;
+    border-width: 0.5px;
+    border-top-color: rgba(0, 168, 255, 0.2);
+    animation-duration: 10s;
+}
+
+/* Quarter rings for Ring 5 - bottom segment */
+.qr-5b {
+    width: 260px;
+    height: 260px;
+    border-width: 0.5px;
+    border-bottom-color: rgba(0, 168, 255, 0.2);
+    animation-duration: 10s;
+}
+
+/* Quarter rings for Ring 6 - left segment */
+.qr-6a {
+    width: 220px;
+    height: 220px;
+    border-width: 1px;
+    border-left-color: rgba(0, 210, 255, 0.2);
+    animation-duration: 7s;
+    animation-direction: reverse;
+}
+
+/* Quarter rings for Ring 6 - right segment */
+.qr-6b {
+    width: 220px;
+    height: 220px;
+    border-width: 1px;
+    border-right-color: rgba(0, 210, 255, 0.2);
+    animation-duration: 7s;
+    animation-direction: reverse;
+}
+
+/* Dots attached to rings with pulse animation */
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 200, 255, 0.8);
+    animation: pulse 2s infinite;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Dots attached to Ring 1 - first dot */
+.dot-1a {
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 168, 255, 0.9);
+}
+
+/* Dots attached to Ring 1 - second dot */
+.dot-1b {
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 210, 255, 0.9);
+}
+
+/* Dots attached to Ring 1 - third dot */
+.dot-1c {
+    width: 6px;
+    height: 6px;
+    background: rgba(0, 255, 242, 0.9);
+}
+
+/* Dots attached to Ring 3 - first dot */
+.dot-3a {
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 255, 170, 0.9);
+}
+
+/* Dots attached to Ring 3 - second dot */
+.dot-3b {
+    width: 9px;
+    height: 9px;
+    background: rgba(0, 255, 242, 0.9);
+}
+
+/* Dots attached to Ring 3 - third dot */
+.dot-3c {
+    width: 7px;
+    height: 7px;
+    background: rgba(0, 210, 255, 0.9);
+}
+
+/* Continuous rotation animation for rings */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pulsing animation for dots */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
